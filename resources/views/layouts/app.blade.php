@@ -22,20 +22,20 @@
 <body>
     <div id="app">
         <div class="wrapper ">
-            {{--@if(Request::is('admin*'))--}}
+            @if(Request::is('admin*'))
                 @include('layouts.partial.sidebar')
-            {{--@endif--}}
+            @endif
 
             <div class="main-panel">
                 <!-- Navbar -->
-            {{--@if(Request::is('admin*'))--}}
+            @if(Request::is('admin*'))
                 @include('layouts.partial.topbar')
-            {{--@endif--}}
+            @endif
             <!-- End Navbar -->
                 @yield('content')
-                {{--@if(Request::is('admin*'))--}}
+                @if(Request::is('admin*'))
                     @include('layouts.partial.footer')
-                {{--@endif--}}
+                @endif
             </div>
         </div>
     </div>
