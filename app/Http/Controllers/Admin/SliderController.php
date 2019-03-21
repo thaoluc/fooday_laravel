@@ -138,7 +138,9 @@ class SliderController extends Controller
     {
         //
        $slider = Slider::find($id);
-       unlink('uploads/slider/'.$slider->image);
+       if(file_exists('uploads/slider/'.$slider->image)){
+           unlink('uploads/slider/'.$slider->image);
+       }
        $slider->delete();
        return redirect()->back()->with('successMsg','Slider Successfully Delete');
     }
