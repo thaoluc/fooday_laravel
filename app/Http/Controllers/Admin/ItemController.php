@@ -46,12 +46,13 @@ class ItemController extends Controller
            'description'=> 'required',
            'price'=>'required',
            'image'=>'required|mimes:jpeg,jpg,bmp,png',
+
         ]);
         $image = $request->file('image');
         $slug = str_slug($request->name);
         if(isset($image)){
             $currentDate = Carbon::now()->toDateString();
-            $imagename = $slug.'-'.$currentDate.'-'.uniqid().':'.$image->getClientOriginalExtension();
+            $imagename = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
 
             if(!file_exists('uploads/item')){
                 mkdir('uploads/item',0777,true);
