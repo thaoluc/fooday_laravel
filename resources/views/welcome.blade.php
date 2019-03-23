@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{asset('frontend/css/flexslider.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/pricing.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap-datetimepicker.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
         @foreach($sliders as $key=>$slider)
         .owl-carousel .owl-wrapper, .owl-carousel .owl-item:nth-child({{$key + 1}}) .item
@@ -150,7 +152,7 @@
 
                                 <a href="#">
                                     <img src="{{asset('uploads/item/'.$item->image)}}" class="img-responsive" alt="Item"
-                                         style="height: 500px; with: 369px">
+                                         style="height: 400px; max-width:max-content    ">
                                     <div class="menu-desc text-center">
                                             <span>{{$item->name}}</h3>
                                                 {{$item->description}}
@@ -610,7 +612,7 @@
 
 <!--== 15. Reserve A Table! ==-->
 <section id="reserve" class="reserve">
-    <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/reserve_black.png">
+    <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{asset('frontend/images/icons/reserve_black.png')}}">
     <div class="wrapper">
         <div class="container-fluid">
             <div class="row dis-table">
@@ -628,13 +630,14 @@
 
 
 <section class="reservation">
-    <img class="img-responsive section-icon hidden-sm hidden-xs" src="images/icons/reserve_color.png">
+    <img class="img-responsive section-icon hidden-sm hidden-xs" src="{{asset('frontend/images/icons/reserve_color.png')}}">
     <div class="wrapper">
         <div class="container-fluid">
             <div class=" section-content">
                 <div class="row">
                     <div class="col-md-5 col-sm-6">
-                        <form class="reservation-form" method="post" action="reserve.php">
+                        <form class="reservation-form" method="post" action="{{route('reservation.reserve')}}">
+                            {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
@@ -650,7 +653,7 @@
                                         <input type="tel" class="form-control reserve-form empty iconified" name="phone" id="phone" required="required" placeholder="  &#xf095;  Phone">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control reserve-form empty iconified" name="datepicker" id="datepicker" required="required" placeholder="&#xf017;  Time">
+                                        <input type="text" class="form-control reserve-form empty iconified" name="dateandtime" id="datetimepicker1" required="required" placeholder="&#xf017;  Time">
                                     </div>
                                 </div>
 
@@ -795,7 +798,18 @@
 <script type="text/javascript" src="{{asset('frontend/js/jquery.hoverdir.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/js/jQuery.scrollSpeed.js')}}"></script>
 <script src="{{asset('frontend/js/script.js')}}"></script>
-
-
+<script src="{{asset('frontend/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            format: "dd MM yyyy - HH:11 P",
+            showMeridian: true,
+            autoclose:true,
+            todayBtn: true
+        });
+    })
+</script>
+{!! Toastr::message() !!}
 </body>
 </html>

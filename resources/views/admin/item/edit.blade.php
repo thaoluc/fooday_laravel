@@ -44,9 +44,9 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="form-group label-floating">
+                                            <div style="" class="form-group label-floating">
                                                 <label class="control-label">Description</label>
-                                                <textarea class="form-control" name="description">{{$item->description}}</textarea>
+                                                <textarea  class="form-control" name="description">{{$item->description}}</textarea>
                                             </div>
                                         </div>
                                     </div>
