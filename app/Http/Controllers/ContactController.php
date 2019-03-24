@@ -25,6 +25,6 @@ class ContactController extends Controller
 
        Toastr::success('Your message successfully send.','Success',["positionClass"=>"toast-top-right"]);
 
-        return redirect()->back()->with('successMsg','Your message successfully send !!');//này cũng k đc lun 
+        return redirect()->back()->with('successMsg','Your message successfully send !!');//này cũng k đc lun
     }
 }
