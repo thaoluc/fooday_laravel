@@ -41,9 +41,10 @@
                                                 <td>{{$reservation->message}}</td>
                                                 <td>
                                                     @if($reservation->status == true)
-                                                        <span class="lable label-info">Confirmed</span>
+                                                        {{--<span class="label label-info">Confirmed</span>--}}
+                                                        <button style="width: 139.16px" disabled type="button" class="btn btn-success">Confirm</button>
                                                     @else
-                                                        <span class="lable label-danger">not Confirmed yet</span>
+                                                        <button disabled type="button" class="btn btn-danger">Not confirm</button>
                                                     @endif
                                                 </td>
                                                 <td>{{$reservation->created_at}}</td>
